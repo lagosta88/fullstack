@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            color: #ff0000;
+        }
+        #doom-container {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 3px solid #ff0000;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+    <style type="text/css">
+       .dosbox-container { width: 320px; height: 200px; }
+       .dosbox-container > .dosbox-overlay { background: url(https://js-dos.com/cdn/DOOM.png); }
+     </style>
+
+</head>
+<body>
+    <h1>html é chat mas é parte do curso</h1>
+
+<div id="dosbox"></div>
+    <br/>
+    <button onclick="dosbox.requestFullScreen();">Make fullscreen</button>
+    
+        <script type="text/javascript" src="https://js-dos.com/cdn/js-dos-api.js"></script>
+        <script type="text/javascript">
+            // carregar uma cópia pública de Doom via CDN js-dos
+            var dosbox = new Dosbox({
+                id: "dosbox",
+                // callback chamado quando o emulador estiver pronto
+                onload: function (dosbox) {
+                    // iniciar o ZIP com nome padrão DOOM.EXE
+                    // usando o pacote oficial hospedado pelo js-dos
+                    dosbox.run("https://js-dos.com/cdn/DOOM.zip");
+                },
+                // progresso opcional para depuração
+                onprogress: function(dosbox, progress) {
+                    console.log("load progress", progress);
+                },
+                onrun: function (dosbox, app) {
+                    console.log("App '" + app + "' is runned");
+                },
+                onerror: function(dosbox, error) {
+                    console.error("DOSBox error", error);
+                }
+            });
+        </script>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
